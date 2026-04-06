@@ -42,6 +42,8 @@ fi
 [ -f ~/.zsh_local ] && source ~/.zsh_local
 
 # Tool inits
-command -v fzf      >/dev/null 2>&1 && eval "$(fzf --zsh)"
+if command -v fzf >/dev/null 2>&1 && fzf --zsh >/dev/null 2>&1; then
+  eval "$(fzf --zsh)"
+fi
 command -v zoxide   >/dev/null 2>&1 && eval "$(zoxide init zsh)"
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
