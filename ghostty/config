@@ -1,0 +1,39 @@
+# ~/.config/ghostty/config
+
+# Font
+font-family = FiraCode Nerd Font
+font-size = 15
+font-feature = +liga
+font-feature = +calt
+
+# Theme
+theme = catppuccin-mocha
+
+# Cursor
+cursor-style = bar
+cursor-style-blink = true
+
+# Window
+window-decoration = auto
+window-padding-x = 8
+window-padding-y = 8
+
+# Terminal
+term = xterm-256color
+scrollback-limit = 10000
+
+# Shell
+shell-integration = zsh
+shell-integration-features = cursor,sudo
+
+# Option key
+macos-option-as-alt = true
+
+# Keybinds
+keybind = cmd+t=new_tab
+keybind = cmd+w=close_surface
+keybind = cmd+shift+[=previous_tab
+keybind = cmd+shift+]=next_tab
+
+
+
