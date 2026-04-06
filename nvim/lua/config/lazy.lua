@@ -34,18 +34,13 @@ vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 vim.cmd.colorscheme "catppuccin-mocha"
 require('mini.statusline').setup()
 require("mason").setup()
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup({ automatic_enable = false })
 -- NOTE: to make any of this work you need a language server.
 -- If you don't know what that is, watch this 5 min video:
 -- https://www.youtube.com/watch?v=LaS32vctfOY
 
 -- Reserve a space in the gutter
 vim.opt.signcolumn = 'yes'
-
--- Add cmp_nvim_lsp capabilities to all servers
-vim.lsp.config('*', {
-  capabilities = require('cmp_nvim_lsp').default_capabilities(),
-})
 
 -- This is where you enable features that only work
 -- if there is a language server active in the file
@@ -67,7 +62,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Language servers
-vim.lsp.enable({
+local lspconfig = require('lspconfig')
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+for _, server in ipairs({
   'gleam',
   'ocamllsp',
   'lua_ls',
@@ -75,7 +73,9 @@ vim.lsp.enable({
   'bashls',
   'dockerls',
   'terraformls',
-})
+}) do
+  lspconfig[server].setup({ capabilities = capabilities })
+end
 
 local cmp = require('cmp')
 cmp.setup({
