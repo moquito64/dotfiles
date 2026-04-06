@@ -47,10 +47,7 @@ Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
 
 [username]
-show_always = true
-style_user = "bg:mauve fg:crust"
-style_root = "bg:mauve fg:crust"
-format = '[ $user@]($style)'
+disabled = true
 
 [hostname]
 ssh_only = false
